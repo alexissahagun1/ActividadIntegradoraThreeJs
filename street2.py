@@ -294,7 +294,7 @@ class AvenueModel(ap.Model):
 
         # Escribir datos recopilados en archivo JSON
         json_file = json.dumps(self.data)
-        with open('simul_data.json2', 'w') as outfile:
+        with open('simul_data2.json', 'w') as outfile:
             outfile.write(json_file)
 
 

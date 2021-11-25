@@ -238,12 +238,23 @@
                 this.position.set(-1200, 900, 1250);
                 this.orbitControls.target = new THREE.Vector3(145, 40, 1250);
                 this.up.set(0, 1, 0);
+                this.topView = false;
+                this.frontView = false;
+                this.sideView = false;
+                this.modelInteriorView = false;
                 this.orbitControls.update();
+                
             }
             setTopView(){
                 this.position.set(145,1000,1250);
                 this.orbitControls.target = new THREE.Vector3(145, 0, 1250);
                 this.up.set(1, 0, 0);
+                this.perspectiveView = false;
+                // this.topView = false;
+                this.frontView = false;
+                this.sideView = false;
+                this.modelInteriorView = false;
+                
                 this.orbitControls.update();
             }
             setModelInteriorView(){
@@ -252,6 +263,11 @@
                     this.position.set(car.position.x, car.position.y + 25, car.position.z+20);
                     this.orbitControls.target = new THREE.Vector3(car.position.x, 20, car.position.z + 50);
                     this.up.set(0, 1, 0);
+                    this.perspectiveView = false;
+                    this.topView = false;
+                    this.frontView = false;
+                    this.sideView = false;
+                    // this.modelInteriorView = false;
                     this.orbitControls.update();
                 }
             }
