@@ -99,6 +99,12 @@
                 camera.setModelInteriorView(value);
             });
 
+            // const guiCarsMenu = gui.addFolder("Cars");
+            // guiCarsMenu.add(cars, "carWireframes").setValue(cars.carWireframes).name("Wireframes").listen().onChange(function(value) {
+            //     cars.setCarWireframes(value);
+            // });
+
+
             // READ JSON DATA
             readTextFile('./simul_data2.json', function(text){
                 data = JSON.parse(text);
@@ -333,7 +339,7 @@
             }
         }
 
-        function createCar(value = 0) {
+        function createCar(value = 0, wireframe = false) {
             var colors = [0xa52523, 0xffffff, 0x00008B, 0x000000, 0x0080000, 0x808080, 0xffa500];
 
             const car = new THREE.Group();
@@ -341,11 +347,14 @@
             const backWheel = createWheels();
             backWheel.position.y = 6;
             backWheel.position.x = -18;
+            backWheel.material.wireframe = wireframe;
             car.add(backWheel);
+            
 
             const frontWheel = createWheels();
             frontWheel.position.y = 6;
             frontWheel.position.x = 18;
+            frontWheel.material.wireframe = wireframe;
             car.add(frontWheel);
 
             const main = new THREE.Mesh(
@@ -353,6 +362,7 @@
                 new THREE.MeshLambertMaterial({ color: colors[value] })
             );
             main.position.y = 12;
+            main.material.wireframe = wireframe;
             car.add(main);
 
             const carFrontTexture = getCarFrontTexture();
@@ -376,6 +386,7 @@
             ]);
             cabin.position.x = -6;
             cabin.position.y = 25.5;
+            cabin.material.wireframe = wireframe;
             car.add(cabin);
 
             return car;
